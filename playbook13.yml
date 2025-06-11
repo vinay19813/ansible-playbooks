@@ -1,0 +1,12 @@
+---
+- name: Implementing host scope variables for a sample server
+  hosts: 172.31.83.73
+  tasks:
+    - name: user creation
+      user:
+        name: "{{ a }}"
+        password: "{{ b }}"
+        uid: "{{ c }}"
+        home: "{{ d }}"
+        comment: "{{ e }}"
+        shell : "{{ f }}"
