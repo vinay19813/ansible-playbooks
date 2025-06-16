@@ -1,0 +1,22 @@
+---
+- name: Install git on all servers
+  hosts: all
+  tasks:
+    - block:
+      - name: Install git on ubuntu server using apt
+        apt:
+          name: git
+          state: present
+          update_cache: yes
+      rescue:
+      - name: Install git on redhat server using yum
+        yum:
+          name: git
+          state: present
+          update_cache: yes
+      always:
+        - name: Display succes msg
+          debug:
+            msg: "git install on all servers"
+
+
