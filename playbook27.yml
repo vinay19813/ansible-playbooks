@@ -1,0 +1,14 @@
+---
+- name: Check if the file is empty if so delete it
+  hosts: all
+  tasks:
+    - name: Capture info above the file
+      stat:
+        path: /tmp/file1
+        register: a
+    - name: Display if the file is empty
+      file:
+        name: /tmp/file1
+        state: absent
+        when: a.stat == 0
+

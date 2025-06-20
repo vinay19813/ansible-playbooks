@@ -1,0 +1,23 @@
+---
+- name: Implementing Tags in ansible
+  hosts: all
+  tasks:
+    - name: Install tree
+      apt:
+        name: tree
+        state: present
+        update_cache: yes
+      tags: tree_installation
+    - name: user creation
+      user:
+        name: vinay
+        password: Reddy
+      tags: user_creation
+    - name: copy passwd file
+      copy:
+        src: /etc/passwd
+        dest: /tmp
+
+
+
+
